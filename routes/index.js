@@ -5,6 +5,7 @@ var Hotel = models.Hotel;
 var Restaurant = models.Restaurant;
 var Activity = models.Activity;
 var Promise = require('bluebird');
+var config = require('../assets/config/config.js');
 
 router.get('/', function(req, res) {
   Promise.all([
@@ -15,9 +16,10 @@ router.get('/', function(req, res) {
       res.render('index', {
         all_hotels: hotels,
         all_restaurants: restaurants,
-        all_activities: activities
+        all_activities: activities,
+        config: config.mapsApi
       });
-    })
-})
+    });
+});
 
 module.exports = router;
